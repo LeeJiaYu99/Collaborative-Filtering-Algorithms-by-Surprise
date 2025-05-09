@@ -17,25 +17,25 @@ Memory-based CF uses similarity measures (e.g. Pearson correlation, cosine simil
 
 KNN with a baseline predictor that accounts for user/item biases.
 
-$$ \hat{r}_{ui} = b_{ui} + \frac{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v) \cdot (r_{vi} - b_{ui})}{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v)}$$
+![KNNBase](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=b_{ui}&plus;\frac{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)\cdot(r_{vi}-b_{ui})}{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)}$$$$\hat{r}_{ui}=b_{ui}&plus;\frac{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)\cdot(r_{vi}-b_{ui})}{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)}$$)
 
 **KNNBasic**
 
 A basic k-nearest neighbor model using user-user or item-item similarity.
 
-$$ \hat{r}_{ui} = \frac{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v) \cdot r_{vi}}{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v)}$$
+![KNNBasic](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=\frac{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)\cdot&space;r_{vi}}{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)}$$)
 
 **KNNWithMeans**
 
 KNN with rating means subtracted to normalize.
 
-$$ \hat{r}_{ui} = \mu_u + \frac{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v) \cdot (r_{vi} - \mu_v)}{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v)}$$
+![KNNMeans](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=\mu_u&plus;\frac{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)\cdot(r_{vi}-\mu_v)}{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)}$$)
 
 **KNNWithZScore**
 
 KNN using Z-score normalization for more standardized comparisons.
 
-$$ \hat{r}_{ui} = \mu_u + \sigma_u \frac{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v) \cdot (r_{vi} - \mu_v) / \sigma_v}{\Sigma_{v \in N^{k}_{i} (u)} sim(u, v)}$$
+![KNNZ](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=\mu_u&plus;\sigma_u\frac{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)\cdot(r_{vi}-\mu_v)/\sigma_v}{\Sigma_{v\in&space;N^{k}_{i}(u)}sim(u,v)}$$)
 
 $\hat{r}_{ui}$: Predicted ratings (in the equation here $u$ is user-perspective and $v$ is of product-perspective)
 \
@@ -64,7 +64,7 @@ $$ R \approx U_k\Sigma_k V_k^T$$
 
 Absorbing $\Sigma$ into $U$ yields lower-dimensional latent feature representations of $(u^\prime_u)^T v_i$.
 
-$$\hat{r}_{ui} = \Sigma_{k} u_{uk}s_{kk}v_{ki} = \Sigma_{k} (u_{uk} s_{kk}) v_{ki} = \Sigma_{k} u^\prime_{uk}v_{ki} = (u^\prime_u)^T v_i$$
+![modelCF](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=\Sigma_{k}u_{uk}s_{kk}v_{ki}=\Sigma_{k}(u_{uk}s_{kk})v_{ki}=\Sigma_{k}u^\prime_{uk}v_{ki}=(u^\prime_u)^T&space;v_i$$)
 
 Let vectors $u^\prime_u = p_u$ and $v_i = q_i$,
 
@@ -87,7 +87,7 @@ Where:
 
 Extension of SVD that includes implicit feedback (e.g. items the user has interacted with).
 
-$$\hat{r}_{ui} = \mu + b_u + b_i + p_u^T (q_i + |I_i|^{-\frac{1}{2}} \Sigma_{j \in I_i} y_j)$$
+![SVD++](https://latex.codecogs.com/svg.image?$$\hat{r}_{ui}=\mu&plus;b_u&plus;b_i&plus;p_u^T(q_i&plus;|I_i|^{-\frac{1}{2}}\Sigma_{j\in&space;I_i}y_j)$$)
 
 Where $y_j$ stands for a new set of factors that capture implicit ratings.
 
